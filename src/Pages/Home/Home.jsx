@@ -1,32 +1,78 @@
 import './Style.css';
 
 function Home() {
+  const categorias = [
+    {
+      nome: 'Sistema',
+      cor: '#EBFDDD',
+      icone: '🖥️',
+      perguntas: ['Como abrir o sistema?', 'Como desinstalar?', 'Dúvidas', 'Dúvidas', 'Dúvidas'],
+    },
+    {
+      nome: 'Aplicativos',
+      cor: '#DDF4FD',
+      icone: '📱',
+      perguntas: ['Como abrir o aplicativo?', 'Como achar o aplicativo?', 'Como mudar a cor do aplicativo?', 'Dúvidas', 'Dúvidas'],
+    },
+    {
+      nome: 'Segurança e Privacidade',
+      cor: '#FDE4F5',
+      icone: '🔒',
+      perguntas: ['Dúvidas', 'Dúvidas', 'Dúvidas', 'Dúvidas', 'Dúvidas'],
+    },
+    {
+      nome: 'Email',
+      cor: '#FFF3DD',
+      icone: '📧',
+      perguntas: ['Dúvidas', 'Dúvidas', 'Dúvidas', 'Dúvidas', 'Dúvidas'],
+    },
+    {
+      nome: 'Produtos',
+      cor: '#E7FDE7',
+      icone: '🛒',
+      perguntas: ['Dúvidas', 'Dúvidas', 'Dúvidas', 'Dúvidas', 'Dúvidas'],
+    },
+    {
+      nome: 'Configurações',
+      cor: '#F2E7FD',
+      icone: '⚙️',
+      perguntas: ['Dúvidas', 'Dúvidas', 'Dúvidas', 'Dúvidas', 'Dúvidas'],
+    },
+  ];
+
   return (
-    <div className="home-container">
-
-      {/* Bloco 1: Barra de pesquisa com título */}
-      <div className="search-section">
-        <h1>Bem-vindo ao FAQ</h1>
-        <input
-          type="text"
-          placeholder="Pesquise uma pergunta..."
-          className="search-input"
-        />
-      </div>
-
-      {/* Bloco 2: Container grande para os cards */}
-      <div className="card-box">
-        {/* Bloco 3: Os 6 cards */}
-        <div className="card-grid">
-          <div className="card">Pergunta 1<br /><small>Resposta curta 1</small></div>
-          <div className="card">Pergunta 2<br /><small>Resposta curta 2</small></div>
-          <div className="card">Pergunta 3<br /><small>Resposta curta 3</small></div>
-          <div className="card">Pergunta 4<br /><small>Resposta curta 4</small></div>
-          <div className="card">Pergunta 5<br /><small>Resposta curta 5</small></div>
-          <div className="card">Pergunta 6<br /><small>Resposta curta 6</small></div>
+    <div className="home-page">
+      <section className="hero">
+        <h1>Suporte</h1>
+        <p>Navegue por nossas perguntas frequentes, tutoriais e outros recursos de autoajuda para encontrar as respostas de que você precisa.</p>
+        <div className="search-bar">
+          <input type="text" placeholder="Pesquisar" />
+          <button>Filtrar</button>
         </div>
-      </div>
+        <div className="popular">
+          <span>Popular: </span>
+          <a href="#">Como conectar 2 monitores?</a>
+          <a href="#">Como copiar e colar?</a>
+        </div>
+      </section>
 
+      <section className="faq-grid">
+        {categorias.map((cat, index) => (
+          <div className="faq-card" key={index}>
+            <div className="faq-header" style={{ backgroundColor: cat.cor }}>
+              <span className="icon">{cat.icone}</span>
+              <strong>{cat.nome}</strong>
+            </div>
+            <ul>
+              {cat.perguntas.map((pergunta, i) => (
+                <li key={i}>
+                  📄 {pergunta} <span className="like">👍</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
     </div>
   );
 }
