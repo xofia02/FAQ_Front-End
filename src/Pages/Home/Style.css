@@ -1,110 +1,154 @@
+/* Reset e fundo geral */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4ff;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f2f3ff;
+  color: #333;
 }
 
+/* Container geral */
 .home-page {
-  display: flex;
-  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
+/* HERO: fundo roxo ocupa toda a tela */
 .hero {
-  background-color: #0c0a23;
+  background: #0a043c;
   color: white;
-  padding: 3rem 2rem;
+  padding: 4rem 1rem;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
   text-align: center;
 }
 
 .hero h1 {
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 .hero p {
-  max-width: 600px;
-  margin: 0 auto 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #ddd;
 }
 
 .search-bar {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
 .search-bar input {
-  padding: 0.6rem 1rem;
+  padding: 0.7rem 1rem;
   font-size: 1rem;
-  border-radius: 6px;
+  width: 100%;
+  max-width: 400px;
   border: none;
-  width: 300px;
+  border-radius: 8px;
 }
 
 .search-bar button {
-  padding: 0.6rem 1.2rem;
-  background-color: #3b5bff;
+  background: #3a6ff8;
   color: white;
   border: none;
-  border-radius: 6px;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
 }
 
 .popular {
   font-size: 0.9rem;
-  color: #aaa;
-  margin-top: 0.5rem;
+  color: #ccc;
 }
 
 .popular a {
-  color: #fff;
+  color: #ccc;
   margin: 0 0.5rem;
   text-decoration: underline;
 }
 
+/* GRID DOS CARDS */
 .faq-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   padding: 3rem 2rem;
 }
 
+@media (max-width: 900px) {
+  .faq-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
 .faq-card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  transition: transform 0.2s ease;
 }
 
-.faq-card:hover {
-  transform: translateY(-4px);
-}
-
+/* Header de cada card */
 .faq-header {
-  padding: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
-.faq-header .icon {
-  font-size: 1.4rem;
+.icon {
+  font-size: 1.5rem;
 }
 
+/* Perguntas */
 .faq-card ul {
   list-style: none;
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 1rem 1rem;
   margin: 0;
 }
 
-.faq-card li {
-  display: flex;
-  justify-content: space-between;
+.pergunta-item {
+  cursor: pointer;
   padding: 0.5rem 0;
   font-size: 0.95rem;
   border-bottom: 1px solid #f0f0f0;
-} 
+  transition: background 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-.like {
-  opacity: 0.5;
+.pergunta-item:hover {
+  background-color: #f9f9f9;
+}
+
+.resposta {
+  margin-top: 0.3rem;
+  text-align: left;
+  font-size: 0.9rem;
+  color: #444;
+  padding-left: 1.2rem;
 }
