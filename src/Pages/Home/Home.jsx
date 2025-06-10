@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Style.css';
+
 
 function Pergunta({ pergunta, resposta }) {
   const [visivel, setVisivel] = useState(false);
@@ -12,6 +14,7 @@ function Pergunta({ pergunta, resposta }) {
 }
 
 function Home() {
+    const navigate = useNavigate();
   const categorias = [
     {
       nome: 'Sistema',
@@ -93,6 +96,13 @@ function Home() {
     },
   ];
 
+  const slugify = (str) =>
+    str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/\s+/g, '-');
+
   return (
     <div className="home-page">
       <section className="hero">
@@ -115,20 +125,25 @@ function Home() {
       </section>
 
       <section className="faq-grid">
-        {categorias.map((cat, index) => (
-          <div className="faq-card" key={index}>
-            <div className="faq-header" style={{ backgroundColor: cat.cor }}>
-              <span className="icon">{cat.icone}</span>
-              <strong>{cat.nome}</strong>
-            </div>
-            <ul>
-              {cat.perguntas.map((p, i) => (
-                <Pergunta key={i} pergunta={p.pergunta} resposta={p.resposta} />
-              ))}
-            </ul>
-          </div>
+  {categorias.map((cat, index) => (
+    <div className="faq-card" key={index} style={{ cursor: 'default' }}>
+      <div
+        className="faq-header"
+        style={{ backgroundColor: cat.cor, cursor: 'pointer' }}
+        onClick={() => navigate(`/${slugify(cat.nome)}`)}
+      >
+        <span className="icon">{cat.icone}</span>
+        <strong>{cat.nome}</strong>
+      </div>
+      <ul>
+        {cat.perguntas.map((p, i) => (
+          <Pergunta key={i} pergunta={p.pergunta} resposta={p.resposta} />
         ))}
-      </section>
+      </ul>
+    </div>
+  ))}
+</section>
+
     </div>
   );
 }

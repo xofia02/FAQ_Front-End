@@ -1,0 +1,1 @@
+export { Setavolta } from "./Setavolta";
