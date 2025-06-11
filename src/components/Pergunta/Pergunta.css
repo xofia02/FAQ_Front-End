@@ -1,0 +1,28 @@
+.pergunta {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pergunta + .pergunta {
+  margin-top: 10px;
+}
+
+.pergunta-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.pergunta-resposta {
+  margin-top: 10px;
+  color: #555;
+}
+
+.seta {
+  font-size: 14px;
+}

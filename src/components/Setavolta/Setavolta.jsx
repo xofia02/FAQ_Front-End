@@ -21,3 +21,4 @@ export const Setavolta = ({ className }) => {
     </div>
   );
 };
+export default Setavolta;

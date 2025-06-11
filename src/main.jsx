@@ -7,7 +7,7 @@ import Aplicativos from './Pages/Filtragem/Aplicativos/Aplicativos.jsx';
 import Configuracoes from './Pages/Filtragem/Configuracoes/Configuracoes.jsx';
 import Email from './Pages/Filtragem/email/email.jsx';
 import Produtos from './Pages/Filtragem/produtos/Produtos.jsx';
-import Seguranca from './Pages/Filtragem/seguranca/Seguranca.jsx';
+import SegurancaPrivacidade from './Pages/Filtragem/seguranca/SegurancaPrivacidade.jsx';
 import Sistema from './Pages/Filtragem/sistema/Sistema.jsx';
 
 createRoot(document.getElementById('root')).render(
@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')).render(
        <Route path="/configuracoes" element={<Configuracoes />} />
         <Route path="/email" element={<Email />} />
         <Route path="/produtos" element={<Produtos />} />
-        <Route path="/seguranca-e-privacidade" element={<Seguranca />} />
+        <Route path="/seguranca-e-privacidade" element={<SegurancaPrivacidade />} />
         <Route path="/sistema" element={<Sistema />} />
       </Routes>
     </BrowserRouter>
