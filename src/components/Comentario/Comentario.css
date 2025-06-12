@@ -34,17 +34,6 @@
   justify-content: center;
 }
 
-.status-verde {
-  position: absolute;
-  bottom: 2px;
-  right: 2px;
-  width: 10px;
-  height: 10px;
-  background-color: #00d42b;
-  border-radius: 50%;
-  border: 2px solid #f5f5ff;
-}
-
 .usuario-info {
   display: flex;
   flex-direction: column;
