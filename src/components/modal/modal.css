@@ -14,7 +14,7 @@
 
 .modal-box {
   background-color: #e7e6f5;
-  padding: 40px;
+  padding: 25px;
   border-radius: 20px;
   color: #0f0f0f;
   width: 400px;
@@ -24,14 +24,14 @@
 .modal-box h2 {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .option {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   cursor: pointer;
   font-weight: bold;
   color: #0f0f0f;
