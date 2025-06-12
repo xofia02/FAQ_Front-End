@@ -114,7 +114,7 @@ function Home() {
           </p>
           <div className="search-bar">
             <input type="text" placeholder="Pesquisar" />
-            <button>Filtrar</button>
+           <button>FILTRAR</button>
           </div>
           <div className="popular">
             <span>Popular: </span>

@@ -24,7 +24,7 @@ const Configuracoes = () => {
   return (
     <CategoriaLayout
       icone="⚙️"
-      titulo="Configirações"
+      titulo="Configurações"
       cor="#4CAF50"
       perguntas={perguntas}
     />

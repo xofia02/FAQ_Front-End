@@ -21,7 +21,6 @@ function Comentario() {
         </div>
 
         <div className="rodape-comentario">
-          <button className="botao-tag">Escolher Tag</button>
           <button className="botao-anexo">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path
