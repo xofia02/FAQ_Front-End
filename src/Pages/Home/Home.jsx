@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Style.css';
+import Modal from '../../components/modal/modal';
 
 
 function Pergunta({ pergunta, resposta }) {
@@ -15,6 +16,8 @@ function Pergunta({ pergunta, resposta }) {
 
 function Home() {
     const navigate = useNavigate();
+    const [openModal, setOpenModal] = useState(false)
+
   const categorias = [
     {
       nome: 'Sistema',
@@ -103,6 +106,9 @@ function Home() {
       .toLowerCase()
       .replace(/\s+/g, '-');
 
+
+  
+
   return (
     <div className="home-page">
       <section className="hero">
@@ -112,15 +118,19 @@ function Home() {
             Navegue por nossas perguntas frequentes, tutoriais e outros recursos de autoajuda
             para encontrar as respostas de que você precisa.
           </p>
-          <div className="search-bar">
-           <button>FILTRAR</button>
-          </div>
-          <div className="popular">
-            <span>Popular: </span>
-            <a href="#">Aplicativos</a>
-            <a href="#">Email</a>
-          </div>
+          <div>
+              <button onClick={() => setOpenModal(true)}>
+                FILTRAR
+              </button>
+         </div>
+         
+            <Modal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
+            Modal
+          </Modal>
+
         </div>
+         
+
       </section>
 
       <section className="faq-grid">
