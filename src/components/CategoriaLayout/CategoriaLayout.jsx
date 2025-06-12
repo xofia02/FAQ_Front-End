@@ -9,7 +9,6 @@ import React, { useState, useEffect } from "react";
 function CategoriaLayout({ titulo, icone, perguntas }) {
   const [modalAberto, setModalAberto] = useState(false);
 
-  // Inicializa os comentários diretamente a partir do localStorage
   const [comentarios, setComentarios] = useState(() => {
     const salvos = localStorage.getItem(`comentarios-${titulo}`);
     if (salvos) {
@@ -22,10 +21,9 @@ function CategoriaLayout({ titulo, icone, perguntas }) {
         console.error("Erro ao carregar comentários:", e);
       }
     }
-    return []; // sem comentário fixo
+    return [];
   });
 
-  // Salvar no localStorage sempre que comentários mudarem
   useEffect(() => {
     localStorage.setItem(`comentarios-${titulo}`, JSON.stringify(comentarios));
   }, [comentarios, titulo]);
@@ -34,9 +32,29 @@ function CategoriaLayout({ titulo, icone, perguntas }) {
     setComentarios([novo, ...comentarios]);
   };
 
+  // Estado para o valor do input da busca (controlado)
+  const [inputBusca, setInputBusca] = useState("");
+
+  // Estado para o termo que efetivamente será usado para destacar (atualiza só no click)
+  const [termoBusca, setTermoBusca] = useState("");
+
+  // Função para destacar termo na string
+  function destacarTexto(texto, termo) {
+    if (!termo) return texto;
+    const partes = texto.split(new RegExp(`(${termo})`, "gi"));
+    return partes.map((parte, i) =>
+      parte.toLowerCase() === termo.toLowerCase() ? (
+        <span key={i} className="destaque">
+          {parte}
+        </span>
+      ) : (
+        parte
+      )
+    );
+  }
+
   return (
     <div className="categoria-wrapper">
-      {/* Fundo azul escuro no topo */}
       <div className="categoria-topo"></div>
 
       <div className="seta-voltar-container">
@@ -47,26 +65,34 @@ function CategoriaLayout({ titulo, icone, perguntas }) {
         <div className="categoria-icone">{icone}</div>
         <div className="categoria-nome">{titulo}</div>
         <div className="categoria-search-bar">
-          <input type="text" placeholder="Pesquisar" />
-          <button>Pesquisar</button>
+          <input
+            type="text"
+            placeholder="Pesquisar"
+            value={inputBusca}
+            onChange={(e) => setInputBusca(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setTermoBusca(inputBusca);
+              }
+            }}
+          />
+          <button onClick={() => setTermoBusca(inputBusca)}>Pesquisar</button>
         </div>
       </div>
 
-      {/* Conteúdo principal dentro da caixa clara */}
       <div className="categoria-container">
         <div className="categoria-faq-grid">
           {perguntas.map((p, i) => (
             <Pergunta
               key={i}
-              pergunta={p.pergunta}
-              resposta={p.resposta}
+              perguntaDestacada={destacarTexto(p.pergunta, termoBusca)}
+              respostaDestacada={destacarTexto(p.resposta, termoBusca)}
               className="categoria-faq-card"
             />
           ))}
         </div>
       </div>
 
-      {/* Comentários */}
       <div className="categoria-div-comentario">
         <div className="comentarios-wrapper">
           {comentarios.map((c, i) => (
@@ -78,7 +104,6 @@ function CategoriaLayout({ titulo, icone, perguntas }) {
         </div>
       </div>
 
-      {/* Modal de comentário */}
       <ModalComentario
         isOpen={modalAberto}
         onClose={() => setModalAberto(false)}
