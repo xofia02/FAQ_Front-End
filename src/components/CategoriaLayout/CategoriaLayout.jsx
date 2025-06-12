@@ -76,7 +76,15 @@ function CategoriaLayout({ titulo, icone, perguntas }) {
               }
             }}
           />
-          <button onClick={() => setTermoBusca(inputBusca)}>Pesquisar</button>
+          <button
+  onClick={() => {
+    setTermoBusca(inputBusca);
+      // tira o foco do input ativo
+  }}
+>
+  Pesquisar
+</button>
+
         </div>
       </div>
 

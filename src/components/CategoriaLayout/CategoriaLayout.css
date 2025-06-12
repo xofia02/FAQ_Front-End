@@ -194,3 +194,6 @@ background-color: #ffffff;
   font-weight: bold;
 }
 
+* {
+  caret-color: transparent !important;
+}
