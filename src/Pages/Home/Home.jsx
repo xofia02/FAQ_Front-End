@@ -7,7 +7,7 @@ function Pergunta({ pergunta, resposta }) {
   const [visivel, setVisivel] = useState(false);
   return (
     <li onClick={() => setVisivel(!visivel)} className="pergunta-item">
-      📄 {pergunta} <span className="like">👍</span>
+      📄 {pergunta} 
       {visivel && <p className="resposta">{resposta}</p>}
     </li>
   );
@@ -113,13 +113,12 @@ function Home() {
             para encontrar as respostas de que você precisa.
           </p>
           <div className="search-bar">
-            <input type="text" placeholder="Pesquisar" />
            <button>FILTRAR</button>
           </div>
           <div className="popular">
             <span>Popular: </span>
-            <a href="#">Como conectar 2 monitores?</a>
-            <a href="#">Como copiar e colar?</a>
+            <a href="#">Aplicativos</a>
+            <a href="#">Email</a>
           </div>
         </div>
       </section>
